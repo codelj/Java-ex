@@ -46,7 +46,7 @@ public class AlarmClock{
 		
 		public void myAlarm(){
 			System.out.println("Please tell me when do you wanna wake up?\n " 
-								+ "Tell me a time in format: \"MM/dd/yyyy, HH:mm, z\"");
+						+ "Tell me a time in format: \"MM/dd/yyyy, HH:mm, z\"");
 			try{
 				Scanner sc = new Scanner(System.in);
 				Date setTime = TIME_FORMAT.parse(sc.nextLine());
@@ -55,8 +55,8 @@ public class AlarmClock{
 					myAlarm();
 				}else{
 					System.out.println("Alarm is set up on: " 
-										+ TIME_FORMAT.format(setTime) 
-										+ "\n");
+								+ TIME_FORMAT.format(setTime) 
+								+ "\n");
 					this.schedule(isReach, setTime);
 					process();
 				}
@@ -70,8 +70,8 @@ public class AlarmClock{
 		TimerTask isReach = new TimerTask(){
 			public void run() {
 				System.out.println("It's time : " 
-										+ TIME_FORMAT.format(this.scheduledExecutionTime())
-										+ "\t WAKE UP!");
+							+ TIME_FORMAT.format(this.scheduledExecutionTime())
+							+ "\t WAKE UP!");
 				this.cancel();
 			}
 		};
