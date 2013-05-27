@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+@Author: lei jian
+@Version: 2013.05.26.0.1
+@eMial: lei.jianray@gmail.com
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">	
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>MyAlarmClock</title>
+		<script language="javascript" type="text/javascript">
+			<!--Hide JavaScript
+			function setAlarm(){
+				var msg = MSG.value;
+				var AlarmTimeSet = new Date();
+				var SystemTimeSet = new Date();
+				var actualTime = new Date(SystemTimeSet.getFullYear(),SystemTimeSet.getMonth()+1,SystemTimeSet.getDate(),
+											SystemTimeSet.getHours(),SystemTimeSet.getMinutes(),SystemTimeSet.getSeconds());
+				var setTime = new Date(AlarmTimeSet.getFullYear(),AlarmTimeSet.getMonth()+1,AlarmTimeSet.getDate(),hh.value,mm.value,ss.value);
+				
+				if (setTime.getTime() == actualTime.getTime()){
+					if (msg== ""){
+						alert("Default message!");						
+					}else{
+						alert(msg);
+					}
+					return;
+				}else if(setTime.getTime() < actualTime.getTime()){
+					alert("Invalid time set up, please re-set again!");
+					return;
+				}
+				setTimeout("setAlarm()",500);
+			}
+			-->
+		</script>
+	</head>
+	
+	<body >
+		<div align= left>
+			Message: <input id="MSG" size="50" /><p/><br/>
+			<div>
+				Set Alarm: <br/>
+				Hour:<input id="hh" size="8" />
+				Minute:<input id="mm" size="8" />
+				Second:<input id="ss" size="8" /> <br/>
+				<button onclick="setAlarm()">Confirm</button>
+			</div>
+		</div>
+	</body>
+	
+</html>
