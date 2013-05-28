@@ -1,0 +1,163 @@
+/*
+*@class : BallGame.java
+*@version : 2013.05.28.0.0
+*@Author : Lei J
+*
+*@Problem : KeyMonitor doesn't work, need to be fixed
+*/
+
+
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+
+public class BallGame extends Frame{
+
+  Image photo = Toolkit.getDefaultToolkit().getImage("images/photo.jpg");
+
+	double x = 200;
+	double y = 150;
+	double degree = Math.PI/3;
+	
+	public void paint(Graphics g){ //paint() is called by system;
+		g.drawImage(photo, (int)x, (int)y, null);
+		if(left){
+			x -= 10;
+		}
+		if(up){
+			y -= 10;
+		}
+		if(right){
+			x += 10;
+		}
+		if(down){
+			y += 10;
+		}
+/* @comment : could use for billiard game;
+ *
+ * 		x += 20*Math.cos(degree);
+ *		y += 20*Math.sin(degree);
+ *		if(y > 245 || y < 40)
+ *			degree = -degree;
+ *		if(x > 440 || x < 10)
+ *			degree = Math.PI - degree;
+ */
+		
+		
+/*	@comment : could use for solar system show case;
+ * 
+ * 		x = 100 + 100*Math.cos(degree);
+ *		y = 100 + 100*Math.sin(degree);
+ *		degree += 0.1;
+ */		
+		
+
+/*	@comment : random practice code
+ *		
+ *		g.setColor(Color.blue);
+ *		g.drawLine(100,100,200,200);
+ *		g.drawRect(50, 50, 100, 120);
+ *		g.drawOval(50, 50, 100, 120);
+ *		g.drawString("Ready!", 200, 200);
+ */
+	}
+	
+	boolean left, right, up, down;
+	class KeyMonitor extends KeyAdapter{
+		public void KeyDown(KeyEvent e){
+
+//			if(37==e.getKeyCode()){
+//				left=true;
+//			}
+//			if(39==e.getKeyCode()){
+//				right = true;
+//			}
+//			if(38==e.getKeyCode()){
+//				up = true;
+//			}
+//			if(40==e.getKeyCode()){
+//				down = true;
+//			}
+			
+			switch(e.getKeyCode()){
+				case 37:
+					left = true;
+					break;
+				case 38:
+					up = true;
+					break;
+				case 39:
+					right = true;
+					break;
+				case 40:
+					down = true;
+					break;
+				default:
+					break;
+			}
+		}
+		
+		public void KeyUp(KeyEvent e){
+			
+//			if(37==e.getKeyCode()){
+//				left=true;
+//			}
+//			if(39==e.getKeyCode()){
+//				right = true;
+//			}
+//			if(38==e.getKeyCode()){
+//				up = true;
+//			}
+//			if(40==e.getKeyCode()){
+//				down = true;
+//			}	
+			
+			switch(e.getKeyCode()){
+				case 37:
+					left = false;
+					break;
+				case 38:
+					up = false;
+					break;
+				case 39:
+					right = false;
+					break;
+				case 40:
+					down = false;
+					break;
+				default:
+					break;
+			}
+		}
+	}
+	
+	class PaintThread extends Thread{
+		public void run(){
+			while(true){
+				repaint();//re-draw window
+				try{
+					Thread.sleep(100);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	public void launchFrame(){
+		setSize(500, 300);
+		setLocation(50, 50);
+		setTitle("Game--Lei J");
+		setBackground(Color.GRAY);
+		setVisible(true);
+		new PaintThread().start();
+		addKeyListener(new KeyMonitor());
+	}
+	
+	public static void main(String[] args) {
+		new BallGame().launchFrame();
+
+	}
+
+}
