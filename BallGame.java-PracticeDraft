@@ -3,7 +3,6 @@
 *@version : 2013.05.28.0.0
 *@Author : Lei J
 *
-*@Problem : KeyMonitor doesn't work, need to be fixed
 */
 
 
@@ -34,13 +33,14 @@ public class BallGame extends Frame{
 		if(down){
 			y += 10;
 		}
+		
 /* @comment : could use for billiard game;
  *
  * 		x += 20*Math.cos(degree);
  *		y += 20*Math.sin(degree);
- *		if(y > 245 || y < 40)
+ *		if(y > 245 || y < 40)  //reach board, reflect;
  *			degree = -degree;
- *		if(x > 440 || x < 10)
+ *		if(x > 440 || x < 10)  //reach board, reflect;
  *			degree = Math.PI - degree;
  */
 		
@@ -65,7 +65,9 @@ public class BallGame extends Frame{
 	
 	boolean left, right, up, down;
 	class KeyMonitor extends KeyAdapter{
-		public void KeyDown(KeyEvent e){
+	
+		@Override
+		public void keyPressed(KeyEvent e){
 
 //			if(37==e.getKeyCode()){
 //				left=true;
@@ -98,7 +100,8 @@ public class BallGame extends Frame{
 			}
 		}
 		
-		public void KeyUp(KeyEvent e){
+		@Override
+		public void keyRelease(KeyEvent e){
 			
 //			if(37==e.getKeyCode()){
 //				left=true;
