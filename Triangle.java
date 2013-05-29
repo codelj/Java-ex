@@ -4,7 +4,8 @@ import java.io.*;
  * @Version:2013.05.28.0.0
  * @Author: Lei Jian
  * @eMail:	lei.jianray@gmail.com
- * 
+ * @problem URL: http://www.yodlecareers.com/puzzles/triangle.html
+ *
  * */
 public class Triangle {
 	private final static int CAPACITY = 100;
