@@ -8,7 +8,6 @@ import java.io.*;
  * */
 public class Triangle {
 	private final static int CAPACITY = 100;
-//	private static int count = 0;
 	private static int maxSum = 0;
 	private static int row = -1;
 	private static Integer[][] intArr = new Integer[CAPACITY][CAPACITY];
