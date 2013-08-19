@@ -1,0 +1,77 @@
+/*
+ * @Author:		LEI JIAN
+ * @Date:		  2013.Mar.29	
+ * @Version:	0.1
+ * @URL:      https://www.codeeval.com/open_challenges/50/
+ * @Desc:		it can also use "suffix tree" & "KMP" to solve this problem, 
+ * 				I may improve it in next version. But it takes a bit time to
+ * 				first understand those algorithm and put them in coding.  		
+ */
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+	public static void main(String[] args) {
+		if(args.length != 0){
+			try{
+				File file = new File(args[0]);
+				BufferedReader in = new BufferedReader(
+	                     new FileReader(file));
+	           String line; 
+	           while ((line = in.readLine()) != null) {	
+	        	   String[] lineArray = line.split("\\s");
+	               if (lineArray.length > 0) {
+	            	   process(lineArray[0]); 
+	            	   
+	               }                
+	           }	            
+	           in.close();	           
+	        }catch(Exception e){
+	        	System.err.println("Reading file ERROR");
+	        	e.printStackTrace();
+	        }
+		}else{
+			System.out.println("Filename not found!!!");
+			System.exit(-1);
+		}
+	}
+	
+	public static void process(String line){
+		String[] subLine = line.split(";");     
+		StringBuffer orgStr = new StringBuffer(subLine[0]);
+		String FR = subLine[1];
+        String[] FRarr = FR.split(",");
+        int loop = 1;
+        int index = 0;
+        for ( int i = 0; i< FRarr.length;)
+        {
+            String pattern = FRarr[i++];
+            String replace = FRarr[i++];
+            Pattern p1 = Pattern.compile(pattern);
+            Matcher m1 = p1.matcher(orgStr);
+            while (m1.find(index)?true:m1.find(0)) {
+                int start = m1.start();
+                int end = m1.start()+ pattern.length();
+//                System.out.println("Start index is: " + start);
+//                System.out.println("End index is: " + end);
+                orgStr = orgStr.replace(start,end,replace);
+                index = end - (pattern.length()-replace.length());
+//                System.out.println("Next start index is: "+ index);
+                break;
+            }
+            System.out.println("After "+ loop++ +" replace() :	"+orgStr);
+        }
+	}
+
+}
+//////////////////////////////////////////////////////////////
+//input file:
+//
+//lookout.txt
+//
+//10011011001;0110,1001,1001,0,10,11
+//
+///////////////////////////////////////////////////////////////
