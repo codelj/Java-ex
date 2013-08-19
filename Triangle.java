@@ -3,7 +3,7 @@ import java.io.*;
  * @Class:  Triangle
  * @Version:2013.05.28.0.0
  * @Author: Lei Jian
- * @eMail:	lei.jianray@gmail.com
+ * @eMail:	leij2ee@gmail.com
  * @problem URL: http://www.yodlecareers.com/puzzles/triangle.html
  *
  * */
