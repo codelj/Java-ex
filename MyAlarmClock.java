@@ -3,7 +3,7 @@
  * @Version: 2013.5.26.0.1
  * @Author: Lei Jian
  * @Date :  May 26,2013 1:18 AM EST
- * @eMail : lei.jianray@gmail.com
+ * @eMail : leij2ee@gmail.com
  *
 */
 import java.text.SimpleDateFormat;
